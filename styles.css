@@ -1,11 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
 body {
     padding: 25px;
     background-color: white;
     color: black;
     font-size: 25px;
+    font-family: 'Inter', sans-serif;
 }
 
 .dark-mode {
     background-color: rgb(51, 51, 51);
     color: white;
+}
+
+nav {
+    display: flex;
+    justify-content: right;
+}
+
+.nav {
+    text-decoration: none;
+    padding: 10px;
+    font-size: 0.70em;
+    user-select: none;
+    color: black;
+}
+
+#nav-signup {
+    text-decoration: none;
+    padding: 10px;
+    font-size: 0.70em;
+    user-select: none;
+    color: rgb(255, 255, 255);
+    background-color: #B17F59;
+    border-radius: 1em;
+    margin-left: 10px;
+}
+
+.nav:hover {
+    text-decoration: none;
+    padding: 10px;
+    font-size: 0.70em;
+    user-select: none;
+    color: rgb(38, 38, 38);
+    background-color: #ededed;
+    border-radius: 0.5em;
+}
+
+.divider {
+    height: 25px;
+    width: 1px;
+    background-color: #ccc;
+    margin-top: 9px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
