@@ -1,8 +1,11 @@
-:root {
-    color-scheme: light dark;
+body {
+    padding: 25px;
+    background-color: white;
+    color: black;
+    font-size: 25px;
 }
 
-body {
-    background-color: light-dark(#fff,#444);
-    color:light-dark(#444,#fff)
+.dark-mode {
+    background-color: black;
+    color: white;
 }
