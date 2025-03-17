@@ -1,16 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-
 body {
-    padding: 25px;
+    padding: 10px;
+    max-width: 95%;
+    margin: auto;
     background-color: white;
     color: black;
     font-size: 25px;
     font-family: 'Inter', sans-serif;
+    transition: all .1s ease;
 }
 
 .dark-mode {
     background-color: rgb(51, 51, 51);
     color: white;
+    transition: all .2s ease;
+    
     .nav {
         color: white;
     }
@@ -19,7 +22,14 @@ body {
         background-color: #b17f5900;
         outline-style: solid;
         outline-width: 1px;
+        transition: all .1s ease;
     }
+
+    #nav-signup:hover {
+        color: rgb(255, 255, 255);
+        background-color: #555555;
+    }
+
     .nav:hover {
         background-color: #555555;
         border-radius: 0.5em;
@@ -29,6 +39,7 @@ body {
 nav {
     display: flex;
     justify-content: right;
+    align-items: center;
 }
 
 .nav {
@@ -37,46 +48,51 @@ nav {
     font-size: 0.70em;
     user-select: none;
     color: black;
+    max-height: 1.25em;
+    border-radius: 0.75em;
+    transition: all .1s ease;
+}
+
+.nav:hover {
+    background-color: #ededed;
 }
 
 #nav-signup {
     text-decoration: none;
+    font-family:Arial, Helvetica, sans-serif;
     padding: 10px;
     font-size: 0.70em;
     user-select: none;
     color: rgb(255, 255, 255);
-    background-color: #B17F59;
-    border-radius: 1em;
+    background-color: #1b4398;
+    border-radius: 0.75em;
     margin-left: 10px;
+    max-height: 1.25em;
+    transition: all .2s ease;
 }
-
 
 #nav-signup:hover {
-    text-decoration: none;
-    padding: 10px;
-    font-size: 0.70em;
-    user-select: none;
-    color: rgb(255, 255, 255);
-    background-color: #a06c45;
-    border-radius: 1em;
-    margin-left: 10px;
+    background-color: #183b88;
 }
 
-.nav:hover {
-    text-decoration: none;
-    padding: 10px;
-    font-size: 0.70em;
-    user-select: none;
-    color: rgb(38, 38, 38);
-    background-color: #ededed;
-    border-radius: 0.5em;
+#nav-home {
+    margin-right: auto;
+    padding-bottom: auto;
+    font-size: 1em
+}
+
+#nav-home:hover {
+    background:none;
 }
 
 .divider {
     height: 25px;
     width: 1px;
     background-color: #ccc;
-    margin-top: 9px;
     margin-left: 10px;
     margin-right: 10px;
+}
+
+#toggleDarkMode {
+    position: fixed;
 }
