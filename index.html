@@ -13,15 +13,43 @@
 <body>
     <header>
         <nav>
-            <a class=nav id=nav-home href="index.html">Home</a></li>
-            <a class=nav id=nav-tool href="#Tools">Tools</a></li>
+            <a class=nav id=nav-home href="index.html">Home</a>
+            <a class=nav id=nav-tool href="#Tools">Tools</a>
             <div class="divider"></div>
-            <a class=nav id=nav-login href="#login">Log in</a></li>
-            <a class=nav id=nav-signup href="#signup">Sign up</a></li>
+            <a class=nav id=nav-login href="#login">Log in</a>
+            <a class=nav id=nav-signup href="#signup">Sign up</a>
+
         </nav>
     </header>
+
+    
+
+
+    <table>
+        <tr>
+            <th class="id-col">Id</th>
+            <th class="name-col">Name</th>
+            <th class="condition-col">Condition</th>
+            <th class="cost-col">Cost</th>
+        </tr>
+        <tr></tr>
+
+        <?php while($results = mysqli_fetch_assoc($result_set)) { ?>
+            <tr>
+            <td><?php echo $results['id']; ?></td>
+            <td><?php echo $results['name']; ?></td>
+            <td><?php echo $results['condition'] ; ?></td>
+            <td><?php echo $results['cost']; ?></td>
+            </tr>
+        <?php } ?>
+    </table>
+
+    
+
+
     <button id="toggleDarkMode" onclick="toggleDarkMode()">Toggle Dark Mode</button>
 
+    
 </body>
 </html>
 
