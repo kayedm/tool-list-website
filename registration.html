@@ -6,13 +6,15 @@
     <!-- Add authorship metadata and link CSS and JS files -->
     <link rel="stylesheet" href="styles.css">
     
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Main Page</title>
 </head>
 <body>
     <header>
         <nav>
             <a class=nav id=nav-home href="index.html">Home</a>
-            <a class=nav id=nav-tool href="#Tools">Tools</a></li>
+            <a class=nav id=nav-tool href="tool.html">Tools</a></li>
             <div class="divider"></div>
             <button id="popout-button">Sign in</button></li>
             <div id="popout-form" class ="popout-form">
@@ -24,49 +26,24 @@
                     <span id="close-popout">&times;</span>
                 </form>
             </div>
-            <a class=nav id=nav-signup href="#signup">Sign up</a></li>
+            <a class=nav id=nav-signup href="registration.html">Sign up</a></li>
         </nav>
     </header>
     <button id="buttonDarkMode" onclick="toggleDarkMode()">Light/Dark Mode</button>
+    <table>
+        <tr>
+            <th class="id-col">Id</th>
+            <th class="name-col">Name</th>
+            <th class="date-col">Date Added</th>
+            <th class="cost-col">Cost</th>
+            <th class="condition-col">Condition</th>
+        </tr>
+    </table>
 
-    <div class="formcontainer">
-        <h1>Sign Up</h1>
-        <hr>
-        <form action="registration.html" method="get" id= "form" onsubmit="return validate();">
 
-
-            <div class="textfield">
-                <label for="email">Email Address</label> 
-                <input type="text" name="email" id="email" placeholder="Email">
-                <span class="error"></span>
-            </div>
-
-            <div class="textfield">
-                <label for="pass">Password</label> 
-                <input type="password" name="pass" id="pass" placeholder="Password">
-                <span class="error"></span>
-            </div>
-        
-            <div class="textfield">
-                <label for="pass2">Re-type Password</label> 
-                <input type="password" id="pass2" placeholder="Password">
-                <span class="error"></span>
-            </div>
-
-            <div class="checkbox">
-                <input type="checkbox" name="terms" id="terms">
-                <label for="terms">I agree to the terms and conditions</label>
-                <span class="error"></span>
-            </div>
-
-            <button type="submit">Sign-Up</button>
-
-        </form>
-    </div>
-    
-    <form action="registration.html" method="get" id= "form" onsubmit="return validate();"></form>
 
     <script src = "js/script.js"></script>
+
 </body>
 </html>
 
