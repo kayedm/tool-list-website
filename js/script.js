@@ -1,6 +1,7 @@
 /* 
 TODO:
 1. actively listen for user input and clear error messages as the user corrects their input.
+
 */
 
 document.addEventListener("DOMContentLoaded", () => {
