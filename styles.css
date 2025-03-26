@@ -15,28 +15,29 @@ body {
     color: white;
     transition: all .2s ease;
     
-    .nav {
+.nav {
         color: rgb(212, 212, 212);
-    }
+}
 
-    #nav-signup {
+#nav-signup {
         color: #d4d4d4;
         background-color: #b17f5900;
         outline-style: solid;
         outline-width: 1px;
         transition: all .1s ease;
-    }
+}
 
-    #nav-signup:hover {
+#nav-signup:hover {
         color: #ffffff;
         background-color: #555555;
-    }
+}
 
-    .nav:hover {
+.nav:hover {
         background-color: #555555;
         border-radius: 0.5em;
     }
-    #toggleDarkMode {
+    
+#toggleDarkMode {
         margin: auto;
         position: absolute;
         bottom: 10px;
@@ -98,6 +99,76 @@ nav {
     background:none;
 }
 
+#popout-button{
+    font-size: 0.70em;
+    border: none;
+    
+}
+
+#popout-button:hover {
+    background-color: #dbdbdb;
+}
+
+.popout-form {
+    position: fixed;
+    top: 0;
+    right: -100%; 
+    width: 300px;
+    height: 100vh;
+    background: #f4f4f4;
+    padding: 20px;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.3s ease;
+  }
+
+  .popout-form.active {
+    right: 0; 
+  }
+
+  #close-popout {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .dark-mode #popout-button {
+    background: #444;
+    color: #fff;
+    
+}
+
+.dark-mode .popout-form {
+    background: #333;
+    color: #fff;
+}
+
+.dark-mode .popout-form input {
+    background: #555;
+    color: #fff;
+    border-color: #666;
+}
+/*Changes the signup button for registration page*/
+button[type="submit"] {
+    background-color: #183b88;
+    color: white;
+    padding: 10px ;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+}
+
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+}
+
 .divider {
     height: 25px;
     width: 1px;
@@ -106,6 +177,11 @@ nav {
     margin-right: 0.5em;
 }
 
+#buttonDarkMode{
+    border: 2px solid;
+    border-color: #1b4398;
+    
+}
 #toggleDarkMode {
     margin: auto;
     position: absolute;
