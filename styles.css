@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/*  
+todo:
+- transitions for erros messages
+- restyle search bar to be centered 
+- polish dark theme
+*/
 
 body {
     padding: 0.25em;
@@ -7,44 +15,97 @@ body {
     color: black;
     font-size: 25px;
     font-family: 'Inter', sans-serif;
-    transition: all .1s ease;
 }
 
+/* Dark mode body */
 .dark-mode {
     background-color: #333333;
     color: white;
-    transition: all .2s ease;
-    
-.nav {
-        color: rgb(212, 212, 212);
 }
 
-#nav-signup {
-        color: #d4d4d4;
-        background-color: #b17f5900;
-        outline-style: solid;
-        outline-width: 1px;
-        transition: all .1s ease;
+/* Modal styling in dark mode */
+.dark-mode .modal-content {
+    background-color: #333333;
+    color: #d4d4d4;
 }
 
-#nav-signup:hover {
-        color: #ffffff;
-        background-color: #555555;
+/* Dark mode login text box */
+.dark-mode input[type="text"],
+.dark-mode input[type="password"] {
+    background-color: #444;
+    color: #fff;
+    border: 1px solid #666;
 }
 
-.nav:hover {
-        background-color: #555555;
-        border-radius: 0.5em;
-    }
-    
-#toggleDarkMode {
-        margin: auto;
-        position: absolute;
-        bottom: 10px;
-        background: none;
-        border: none;
-        color: #dcdcdc;
-    }
+/* Nav links in dark mode */
+.dark-mode .nav {
+    color: rgb(212, 212, 212);
+}
+
+/* Sign up button in dark mode */
+.dark-mode #signup {
+    color: #d4d4d4;
+    background-color: transparent;
+    outline-style: solid;
+    outline-width: 1px;
+    outline-color: #d4d4d4;
+    transition: all 0.1s ease;
+}
+
+.dark-mode #signup:hover {
+    color: #ffffff;
+    background-color: #555555;
+}
+
+/* Login button in dark mode */
+.dark-mode #login {
+    color: #d4d4d4;
+    background: none;
+    transition: all 0.1s ease;
+}
+
+.dark-mode #login:hover {
+    color: #ffffff;
+    background-color: #555555;
+}
+
+/* Nav hover in dark mode */
+.dark-mode .nav:hover {
+    background-color: #555555;
+    border-radius: 0.5em;
+}
+
+/* Popout button in dark mode */
+.dark-mode #popout-button {
+    background: #444;
+    color: #fff;
+}
+
+/* Popout form in dark mode */
+.dark-mode .popout-form {
+    background: #333;
+    color: #fff;
+}
+
+/* Popout form input fields in dark mode */
+.dark-mode .popout-form input {
+    background: #555;
+    color: #fff;
+    border-color: #666;
+}
+
+/* Toggle dark mode button in dark mode */
+.dark-mode #toggleDarkMode {
+    margin: auto;
+    position: absolute;
+    bottom: 1em;
+    color: #dcdcdc;
+}
+
+.dark-mode #toggleDarkMode:hover {
+    background-color: #767676;
+    border-radius: 0.55em;
+    transition: all 0.3s ease;
 }
 
 nav {
@@ -58,7 +119,7 @@ nav {
     padding: 10px;
     font-size: 0.70em;
     user-select: none;
-    color: #2e2e2e;
+    color: #000000;
     max-height: 1.25em;
     border-radius: 0.55em;
     transition: all .15s ease;
@@ -68,22 +129,32 @@ nav {
     background-color: #dbdbdb;
 }
 
-#nav-signup {
-    text-decoration: none;
-    font-family:Arial, Helvetica, sans-serif;
-    padding: 10px;
-    font-size: 0.70em;
-    user-select: none;
+#signup {
+    font-size: 0.75em;
+    padding: 6px 12px;
     color: #ffffff;
     background-color: #1b4398;
-    border-radius: 0.75em;
+    border: none;
+    border-radius: 6px;
     margin-left: 10px;
-    max-height: 1.25em;
-    transition: all .2s ease;
 }
 
-#nav-signup:hover {
-    background-color: #183b88;
+#signup:hover {
+    background-color: #163a80;
+}
+
+#login {
+    font-size: 0.75em;
+    padding: 6px 12px;
+    color: #000000;
+    background: none;
+    border: none;
+    border-radius: 6px;
+    margin-left: 10px;
+}
+
+#login:hover {
+    background-color: #dbdbdb;
 }
 
 #nav-home {
@@ -91,18 +162,18 @@ nav {
     padding-left: 0px;
     padding-bottom: auto;
     font-size: 1em;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: bold;
 }
 
 #nav-home:hover {
-    background:none;
+    background: none;
 }
 
-#popout-button{
+#popout-button {
     font-size: 0.70em;
     border: none;
-    
+
 }
 
 #popout-button:hover {
@@ -112,31 +183,31 @@ nav {
 .popout-form {
     position: fixed;
     top: 0;
-    right: -100%; 
+    right: -100%;
     width: 300px;
     height: 100vh;
     background: #f4f4f4;
     padding: 20px;
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
     transition: right 0.3s ease;
-  }
+}
 
-  .popout-form.active {
-    right: 0; 
-  }
+.popout-form.active {
+    right: 0;
+}
 
-  #close-popout {
+#close-popout {
     position: absolute;
     top: 10px;
     right: 15px;
     font-size: 24px;
     cursor: pointer;
-  }
+}
 
-  .dark-mode #popout-button {
+.dark-mode #popout-button {
     background: #444;
     color: #fff;
-    
+
 }
 
 .dark-mode .popout-form {
@@ -149,11 +220,12 @@ nav {
     color: #fff;
     border-color: #666;
 }
+
 /*Changes the signup button for registration page*/
 button[type="submit"] {
     background-color: #183b88;
     color: white;
-    padding: 10px ;
+    padding: 10px;
     margin-top: 10px;
     border: none;
     border-radius: 4px;
@@ -177,11 +249,12 @@ input[type="password"] {
     margin-right: 0.5em;
 }
 
-#buttonDarkMode{
+#buttonDarkMode {
     border: 2px solid;
     border-color: #1b4398;
-    
+
 }
+
 #toggleDarkMode {
     margin: auto;
     position: absolute;
@@ -190,11 +263,12 @@ input[type="password"] {
 }
 
 #toggleDarkMode:hover {
-background-color: #767676;
-border-radius: 0.55em;
-transition: all .3s ease;
+    background-color: #767676;
+    border-radius: 0.55em;
+    transition: all .3s ease;
 }
 
+/* START OF TABLE FOMARTTING */
 table {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 0.50em;
@@ -206,7 +280,8 @@ table {
 }
 
 
-td, th {
+td,
+th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 0.2em;
@@ -214,18 +289,178 @@ td, th {
 
 .id-col {
     width: 2em;
-text-align: center;
+    text-align: center;
 }
 
 th:first-child {
     border-top-left-radius: 10px;
 }
+
 th:last-child {
     border-top-right-radius: 10px;
 }
+
 tr:last-child td:first-child {
     border-bottom-left-radius: 10px;
 }
+
 tr:last-child td:last-child {
     border-bottom-right-radius: 10px;
+}
+
+/* END OF TABLE FORMATTING */
+
+.popout-button {
+    font-size: 0.70em;
+    border: none;
+    background: none;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: 1em auto;
+    padding: 20px;
+    border: 1px solid #888;
+    max-width: 500px;
+    border-radius: 0.4em;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal input[type="text"],
+.modal input[type="password"],
+.modal input[type="email"] {
+    width: 100%;
+    /* Keep it full width inside the form box */
+    padding: 6px 10px;
+    /* Less padding = smaller height */
+    font-size: 0.9rem;
+    /* Smaller text */
+    margin: 6px 0;
+    /* Slightly tighter spacing */
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.signupbtn,
+.loginbtn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: rgb(39, 39, 39);
+}
+
+/* Minimalist search bar (centered in nav) */
+.nav-center {
+    display: flex;
+    justify-content: center;
+}
+
+#search-bar {
+    padding: 4px 12px;
+    width: 200px;
+    /* You can adjust the width as needed */
+    font-size: 0.6em;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
+    color: #333;
+    transition: all 0.2s ease;
+    margin-right: 2px;
+}
+
+#search-bar:focus {
+    border-color: none;
+    /* Change border color on focus */
+    outline: none;
+    /* Remove default outline */
+    width: 300px;
+    /* Expand the search bar on focus */
+
+}
+
+#search-bar::placeholder {
+    color: #aaa;
+    /* Placeholder text color */
+}
+
+
+.error {
+    margin-bottom: 1em;
+    margin-left: px;
+    color: #ff0019;
+    font-size: 12px;
+    font-family: "Inter", "Roobert", "Helvetica", sans-serif;
+}
+
+#loginform label {
+    font-size: 13px;
+    font-family: "Roboto", sans-serif;
+    display: block;
+    margin-left: 2px;
+}
+
+#loginform h1 {
+    font-size: 1em;
+}
+
+#signupform label {
+    font-size: 13px;
+    font-family: "Roboto", sans-serif;
+    display: block;
+    margin-left: 2px;
+}
+
+#signupform h1 {
+    font-size: 1em;
+}
+
+#tos {
+    font-size: 0.5em;
+    color: #666;
+    margin-top: 1em;
+    text-align: left;
+    /* or center, depending on your layout */
+}
+
+#tos a {
+    color: #1b4398;
+    text-decoration: underline;
+}
+
+#tos a:hover {
+    color: #163a80;
+    text-decoration: none;
+}
+
+
+.close {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    font-size: 28px;
+    color: #4e4e4e;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+    text-decoration: none;
 }

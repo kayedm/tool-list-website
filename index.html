@@ -1,37 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Add authorship metadata and link CSS and JS files -->
     <link rel="stylesheet" href="styles.css">
-  
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Main Page</title>
 </head>
 <body>
-    <header>
+    <header> 
         <nav>
             <a class=nav id=nav-home href="index.html">Home</a>
-            <a class=nav id=nav-tool href="tool.html">Tools</a></li>
-            <div class="divider"></div>
-            <button id="popout-button">Sign in</button></li>
-            <div id="popout-form" class ="popout-form">
-                <form>
-                    <h3>Login</h3>
-                    <input type="text" placeholder="Email" required>
-                    <input type="text" placeholder="Password" required>
-                    <button type="submit">Login</button>
-                    <span id="close-popout">&times;</span>
-                </form>
+            <div class="nav-center">
+                <input type="text" placeholder="Search.." id="search-bar">
             </div>
-            <a class=nav id=nav-signup href="registration.html">Sign up</a></li>
+            <a class=nav id=nav-tool href="index.html">Tools</a></li>
+            <div class="divider"></div>
+            <button id="login" onclick="document.getElementById('id01').style.display='block'">Login</button>
+            <button id="signup" onclick="document.getElementById('id02').style.display='block'">Sign up</button>
         </nav>
     </header>
-    <button id="buttonDarkMode" onclick="toggleDarkMode()">Light/Dark Mode</button>
-    
 
+
+    <!--  Login Form  -->
+    <div id="id01" class="modal">
+        <div class="modal-content">
+            <span class="close" title="Close Modal"
+                onclick="document.getElementById('id01').style.display='none'">&times;</span>
+            <form id="loginform" class="modal-form" action="login.php" method="post">
+                <h1>Login</h1>
+                <hr>
+
+                <div>
+                <label for="email"><b>Email</b></label>
+                <input id="email" type="text" placeholder="Enter Email" name="email">
+                <div class="error"></div>
+                </div>
+
+                <div>
+                <label for="password"><b>Password</b></label>
+                <input id="password" type="password" placeholder="Enter Password" name="password">
+                <div class="error"></div>
+                </div>
+
+                <div class="clearfix">
+                    <button type="submit" class="loginbtn">Log in</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--  Sign up Form  -->
+    <div id="id02" class="modal">
+        <div class="modal-content">
+            <span class="close" title="Close Modal"
+                onclick="document.getElementById('id02').style.display='none'">&times;</span>
+            <form id="signupform" class="modal-form" action="" method="post">
+                <h1>Sign Up</h1>
+                <hr>
+                <div>
+                <label for="name"><b>Name</b></label>
+                <input id="name" type="text" placeholder="Enter Name" name="name">
+                <div class="error"></div>
+                </div>
+
+                <div>
+                <label for="email"><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" name="email">
+                <div class="error"></div>
+                </div>
+
+                <div>
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password">
+                <div class="error"></div>
+                </div>
+
+                <div>
+                <label for="password2"><b>Repeat Password</b></label>
+                <input type="password" placeholder="Repeat Password" name="password2">
+                <div class="error"></div>
+                </div>
+
+                <div id="tos">
+                    <p> By creating an account you agree to our
+                    <a href="#">Terms & Privacy</a>.
+                    </p>
+                </div>
+
+                <div class="clearfix">
+                    <button type="submit" class="signupbtn">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <button id="buttonDarkMode" onclick="toggleDarkMode()">Light/Dark Mode</button>
 
     <table>
         <tr>
@@ -43,20 +108,41 @@
         <tr></tr>
 
         <?php while($results = mysqli_fetch_assoc($result_set)) { ?>
-            <tr>
-            <td><?php echo $results['id']; ?></td>
-            <td><?php echo $results['name']; ?></td>
-            <td><?php echo $results['condition'] ; ?></td>
-            <td><?php echo $results['cost']; ?></td>
-            </tr>
+        <tr>
+            <td>
+                <?php echo $results['id']; ?>
+            </td>
+            <td>
+                <?php echo $results['name']; ?>
+            </td>
+            <td>
+                <?php echo $results['condition'] ; ?>
+            </td>
+            <td>
+                <?php echo $results['cost']; ?>
+            </td>
+        </tr>
         <?php } ?>
     </table>
 
-    
+    <script src="js/script.js"></script>
+    <script>
+        window.addEventListener('click', function (event) {
+            const modal = document.getElementById('id01');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+            window.addEventListener('click', function (event) {
+            const modal = document.getElementById('id02');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
 
 
-    <script src = "js/script.js"></script>
-    
+
 </body>
-</html>
 
+</html>
