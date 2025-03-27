@@ -5,6 +5,7 @@ todo:
 - transitions for erros messages
 - restyle search bar to be centered 
 - polish dark theme
+- boxes turn red when error for signup and login 
 */
 
 body {
@@ -367,6 +368,7 @@ tr:last-child td:last-child {
     color: rgb(39, 39, 39);
 }
 
+
 /* Minimalist search bar (centered in nav) */
 .nav-center {
     display: flex;
@@ -462,5 +464,16 @@ tr:last-child td:last-child {
 
 .close:hover {
     color: black;
+    text-decoration: none;
+}
+
+.logout-btn {
+    font-size: 0.75em;
+    padding: 6px 12px;
+    color: #ffffff;
+    background-color: #a31717;
+    border: none;
+    border-radius: 6px;
+    margin-left: 10px;
     text-decoration: none;
 }
