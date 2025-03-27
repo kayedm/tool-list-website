@@ -1,8 +1,3 @@
-/* 
-TODO:
-1. actively listen for user input and clear error messages as the user corrects their input.
-
-*/
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -18,10 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const loginPass = loginform.querySelector('[name="password"]');
 
     //Gets the signup form fields
-    const signupName = signupform.querySelector('[name="name"]');
-    const signupEmail = signupform.querySelector('[name="email"]');
-    const signupPass = signupform.querySelector('[name="password"]');
-    const signupPass2 = signupform.querySelector('[name="password2"]');
+    const signupName = document.querySelector("#signup-name");
+    const signupEmail = document.querySelector("#signup-email");
+    const signupPass = document.querySelector("#signup-password");
+    const signupPass2 = document.querySelector("#signup-password2");
+
 
     //Displays error message
     const showError = (element, message) => {
@@ -38,85 +34,89 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
 
-    //Validates the login form
-    const validateLogin = () => {
-        let success = true;
-
+    //Validates the email
+    function validateEmail(element) {
         let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(loginEmail.value)) {
-            showError(
-                loginEmail,
-                "Email address should be non-empty with the format xyx@xyx.xyx."
-            );
-            success = false;
+        if (!emailPattern.test(element.value)) {
+            showError(element, "Please enter a valid email address with the format xyz@xyz.xyz");
+            return false;
         } else {
-            showSuccess(loginEmail);
+            showSuccess(element);
+            return true;
         }
+    }
+    
 
-        if (loginPass.value.length <= 8) {
-            showError(loginPass, "Password should be at least 8 charaters long.");
-            success = false;
+    //Validates the passwords
+    function validatePassword(element) {
+        if (element.value.length < 8 || !/\d/.test(element.value)) {
+            showError(element, "Password must be at least 8 characters and contain a number.");
+            return false;
         } else {
-            showSuccess(loginPass);
+            showSuccess(element);
+            return true;
         }
+    }
+    
 
-        return success;
-    };
-
-    //Validates the signup form
-    const validateSignup = () => {
-        let signupSuccess = true;
-
-        if (signupName.value.trim() === "") {
-            showError(signupName, "Name should be non-empty.");
-            signupSuccess = false;
+    //Checks if the passwords match
+    function validatePasswordMatch() {
+        const password = document.querySelector("#signup-password");
+        const confirmPassword = document.querySelector("#signup-password2");
+        
+        if (password.value !== confirmPassword.value) {
+            showError(confirmPassword, "Passwords do not match.");
+            return false;
         } else {
-            showSuccess(signupName);
+            showSuccess(confirmPassword);
+            return true;
         }
+    }
+    
 
-        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(signupEmail.value)) {
-            showError(
-                signupEmail,
-                "Email address should be non-empty with the format xyx@xyx.xyx."
-            );
-            signupSuccess = false;
+    //Checks if fields are empty
+    function validateNotEmpty(element, errorMessage) {
+        if (element.value.trim() === "") {
+            showError(element, errorMessage);
+            return false; // Return false if the field is empty
         } else {
-            showSuccess(signupEmail);
+            showSuccess(element);
+            return true; // Return true if the field is not empty
         }
+    }
+    
 
-        if (signupPass.value.length <= 8) {
-            showError(signupPass, "Password should be at least 8 charaters long.");
-            signupSuccess = false;
-        } else {
-            showSuccess(signupPass);
-        }
+    //Attached event listeners for real-time validation for login form
+    loginEmail.addEventListener("input", () => validateEmail(loginEmail));
+    loginPass.addEventListener("input", () => validatePassword(loginPass));
 
-        if (signupPass2.value !== signupPass.value) {
-            showError(signupPass2, "Please retype password.");
-            signupSuccess = false;
-        } else {
-            showSuccess(signupPass2);
-        }
-
-        return signupSuccess;
-    };
 
     //Stops login form submition if validation fails
     loginform.addEventListener("submit", function (e) {
-        console.log("submitting login form...");
-        if (!validateLogin()) {
+        if (!validateEmail(loginEmail) || !validatePassword(loginPass)) {
             e.preventDefault();
         }
     });
 
     //Stops signup form submition if validation fails
     signupform.addEventListener("submit", function (e) {
-        console.log("submitting signup form...");
-        if (!validateSignup()) {
+        let isValid = true;
+
+        if (!validateNotEmpty(signupName, "Name cannot be empty.")) isValid = false;
+        if (!validateEmail(signupEmail)) isValid = false;
+        if (!validatePassword(signupPass)) isValid = false;
+        if (!validatePasswordMatch()) isValid = false;
+
+        if (!isValid) {
             e.preventDefault();
         }
     });
+
+    //Attached event listeners for real-time validatiopn for signup forms
+    signupName.addEventListener("input", () => validateNotEmpty(signupName, "Name cannot be empty"));
+    signupEmail.addEventListener("input", () => validateEmail(signupEmail));
+    signupPass.addEventListener("input", () => validatePassword(signupPass));
+    signupPass2.addEventListener("input", validatePasswordMatch);
 });
 
 // Toggles dark mode on and off
