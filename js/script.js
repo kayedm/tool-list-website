@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const signupPass = document.querySelector("#signup-password");
     const signupPass2 = document.querySelector("#signup-password2");
 
-
+    
     //Displays error message
     const showError = (element, message) => {
         const field = element.parentElement;
@@ -122,4 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Toggles dark mode on and off
 function toggleDarkMode() {
     document.body.classList.toggle("dark-mode");
+
+    const isDark = document.body.classList.contains("dark-mode");
+    localStorage.setItem("darkMode", isDark ? "enabled" : "disabled");
 }

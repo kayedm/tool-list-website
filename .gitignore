@@ -1,0 +1,59 @@
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# IDE / editor folders
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Environment / credentials
+.env
+.env.*.local
+config.php            # if you keep credentials in a PHP file
+*.local.php
+
+# PHP dependencies (Composer)
+vendor/
+composer.lock
+composer.phar
+
+# Node.js dependencies & build artifacts
+node_modules/
+npm-debug.log*
+yarn-error.log*
+yarn-debug.log*
+package-lock.json
+yarn.lock
+dist/
+build/
+
+# Logs, caches and temp
+*.log
+logs/
+tmp/
+cache/
+
+# XAMPP / project‑specific
+# (if you accidentally committed parts of XAMPP itself)
+xampp/
+xamppfiles/
+
+# Database dumps / files
+*.sql
+*.sqlite
+*.db
+
+# SASS/LESS caches
+.sass-cache/
+.less-cache/
+
+# Coverage and test reports
+coverage/
+phpunit.xml
+.phpunit.result.cache
+
+# Misc
+*.bak
+*.swp
