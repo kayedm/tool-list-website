@@ -4,11 +4,11 @@ A web-based application for managing and tracking tools with user profiles, them
 
 
 ## Features
-- **Add/Edit/Delete Tools**: Manage tool inventory with forms.
-- **User Profiles**: Each user has a profile with stats (Username, Amount of tools).
-- **Frontend & Backend Validation**: Ensure all input data is valid and secure.
-- **Light/Dark Theme Toggle**: User preference for interface theme.
-- **Search Functionality**: Quickly search tools by name or description.
+- **Add/Edit/Delete Tools**
+- **User Profiles**
+- **Frontend & Backend Validation**
+- **Light/Dark Theme Toggle**
+- **Search Functionality**
 
 ## Installation
 
