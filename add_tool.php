@@ -3,7 +3,7 @@
 session_start();
 require_once 'database.php';
 
-// Checks for form submissoin and handles the addition of a new tool
+// Checks for form submission and handles the addition of a new tool
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (!isset($_SESSION['user_id'])) {
         header("Location: index.php");
