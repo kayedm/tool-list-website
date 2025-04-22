@@ -336,6 +336,20 @@ tr:last-child td:last-child {
     background-color: #7c1111;
 }
 
+.edit-tool-btn {
+    font-size: 0.5em;
+    padding: 3px 7px;
+    color: #ffffff;
+    background-color: #1ca317;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.edit-tool-btn:hover {
+    background-color: #005f09;
+}
+
 #btd-btm {
     font-size: 0.5em;
     padding: 3px 7px;
@@ -558,13 +572,13 @@ tr:last-child td:last-child {
     transition: all 0.3s ease;
 }
 
-
+.dark-mode .edit-tool-btn,
 .dark-mode .remove-tool-btn,
 .dark-mode .add-tool-btn {
     background-color: transparent;
     border: 1px solid rgb(199, 199, 199);
 }
-
+.dark-mode .edit-tool-btn,
 .dark-mode .remove-tool-btn:hover,
 .dark-mode .add-tool-btn:hover {
     background-color: rgba(255, 255, 255, 0.192);
@@ -657,4 +671,11 @@ tr:last-child td:last-child {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 1.5rem;
+}
+
+.id-col,
+td:first-child {
+  white-space: nowrap;
+  width: 1%;
+  max-width: 2em;
 }
