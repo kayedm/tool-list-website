@@ -146,7 +146,7 @@ $tools = $result->fetch_all(MYSQLI_ASSOC);
             const rows = document.querySelectorAll('form#removeform table tr');
 
             rows.forEach((row, index) => {
-                // Skip the table header
+                // Skip the table header 
                 if (index === 0) return;
 
                 const nameCell = row.querySelectorAll('td')[1];
@@ -155,7 +155,7 @@ $tools = $result->fetch_all(MYSQLI_ASSOC);
                 const name = nameCell.textContent.toLowerCase();
                 row.style.display = name.includes(searchValue) ? '' : 'none';
             });
-        });
+        }); 
 
         window.addEventListener("DOMContentLoaded", () => {
             const darkModeSetting = localStorage.getItem("darkMode");
