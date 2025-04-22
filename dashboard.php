@@ -1,4 +1,5 @@
 <?php
+
 // Start session to track user information
 session_start();
 // Include database connection file
@@ -20,6 +21,7 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
+$tools = $result->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -62,6 +64,11 @@ $result = $stmt->get_result();
         Removing Tool
     </button>
 
+    <!-- Edit Tool -->
+    <button type="button" id="openEditModal" class="edit-tool-btn">
+        Edit Tool
+    </button>
+
     <!--  Add Tool Form  -->
     <div id="AddToolModal" class="modal">
         <div class="modal-content">
@@ -84,27 +91,47 @@ $result = $stmt->get_result();
     </div>
 
     <!--  Remove Tool Form  -->
-    <form action="remove_tool.php" method="POST" id="removeform" class="modal-form">
+    <form … id="removeform">
         <table>
-            <tr>
-                <th class="id-col"></th>
-                <th class="name-col">Name</th>
-                <th class="condition-col">Condition</th>
-                <th class="cost-col">Cost</th>
-            </tr>
-            <tr></tr>
+            <!-- headers… -->
+            <?php foreach ($tools as $tool): ?>
 
-            <?php while ($tool = $result->fetch_assoc()): ?>
-                <tr>
-                    <td><input type="checkbox" name="tool_ids[]" value="<?php echo htmlspecialchars($tool['id']); ?>"></td>
-                    <td><?php echo htmlspecialchars($tool['name']); ?></td>
-                    <td><?php echo htmlspecialchars($tool['ToolCondition']); ?></td>
-                    <td><?php echo htmlspecialchars($tool['cost']); ?></td>
+                <tr
+                    data-id="<?= (int)$tool['id'] ?>"
+                    data-name="<?= htmlspecialchars($tool['name']) ?>"
+                    data-cond="<?= htmlspecialchars($tool['ToolCondition']) ?>"
+                    data-cost="<?= htmlspecialchars($tool['cost']) ?>">
+                    <td>
+                        <input
+                            type="checkbox"
+                            name="tool_ids[]"
+                            value="<?= (int)$tool['id'] ?>">
+                    </td>
+                    <td><?= htmlspecialchars($tool['name'])      ?></td>
+                    <td><?= htmlspecialchars($tool['ToolCondition']) ?></td>
+                    <td><?= htmlspecialchars($tool['cost'])      ?></td>
                 </tr>
-            <?php endwhile; ?>
+            <?php endforeach; ?>
         </table>
     </form>
 
+    <!-- Edit tool form -->
+    <div id="EditToolModal" class="modal" style="display:none">
+        <div class="modal-content">
+            <span
+                class="close"
+                onclick="document.getElementById('EditToolModal').style.display='none'">&times;</span>
+            <form
+                action="update_tool.php"
+                method="POST"
+                id="edittoolform"
+                class="modal-form">
+                <h2>Edit Selected Tools</h2>
+                <div id="editFormsContainer"></div>
+                <button type="submit">Save All Changes</button>
+            </form>
+        </div>
+    </div>
 
     <script>
         window.addEventListener('click', function(event) {
@@ -135,6 +162,68 @@ $result = $stmt->get_result();
             if (darkModeSetting === "enabled") {
                 document.body.classList.add("dark-mode");
             }
+        });
+
+        document.getElementById('openEditModal').addEventListener('click', () => {
+            const checked = Array.from(
+                document.querySelectorAll('input[name="tool_ids[]"]:checked')
+            ).map(cb => cb.closest('tr'));
+
+            if (!checked.length) {
+                alert('Select at least one tool to edit.');
+                return;
+            }
+
+            const container = document.getElementById('editFormsContainer');
+            container.innerHTML = '';
+
+            checked.forEach(row => {
+                const id = row.dataset.id;
+                const name = row.dataset.name;
+                const cond = row.dataset.cond;
+                const cost = row.dataset.cost;
+
+                // wrap each tool in its own fieldset for clarity
+                const fs = document.createElement('fieldset');
+                fs.innerHTML = `
+        <legend>Tool #${id}</legend>
+        <input type="hidden" name="ids[]" value="${id}">
+        <label>
+          Name
+          <input
+            type="text"
+            name="name[${id}]"
+            value="${name}"
+            required>
+        </label>
+        <label>
+          Condition
+          <input
+            type="text"
+            name="condition[${id}]"
+            value="${cond}"
+            required>
+        </label>
+        <label>
+          Cost ($)
+          <input
+            type="number"
+            name="cost[${id}]"
+            step="0.01"
+            value="${cost}"
+            required>
+        </label>
+      `;
+                container.appendChild(fs);
+            });
+
+            document.getElementById('EditToolModal').style.display = 'block';
+        });
+
+        //Closes edit tool form when clicking outside content
+        window.addEventListener('click', e => {
+            const modal = document.getElementById('EditToolModal');
+            if (e.target === modal) modal.style.display = 'none';
         });
     </script>
 
