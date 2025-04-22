@@ -52,13 +52,13 @@ A web-based application for managing and tracking tools with user profiles, them
    );
 
 5. **Configure the database connection**:
-   - Open `config.php` in the project root.
+   - Open `credentials.php` in the project root.
    - Set your database credentials:
      ```php
-     $host = 'localhost';
-     $db = 'tool_tracking';  // your db name
-     $user = 'root';
-     $pass = ''; // your db password
+      define("DB_SERVER", "localhost");
+      define("DB_USER", "root");
+      define("DB_PASS", ""); // your db password
+      define("DB_NAME", ""); // your db name
      ```
 
 6. **Access the website**:
