@@ -8,40 +8,39 @@
     <link rel="stylesheet" href="styles.css">
     <title>Main Page</title>
 </head>
+
 <body>
-    <header> 
+    <header>
         <nav>
-            <a class=nav id=nav-home href="index.html">Home</a>
+            <a class=nav id=nav-home href="index.php">Home</a>
             <div class="nav-center">
-                <input type="text" placeholder="Search.." id="search-bar">
-            </div>
-            <a class=nav id=nav-tool href="index.html">Tools</a></li>
-            <div class="divider"></div>
             <button id="login" onclick="document.getElementById('id01').style.display='block'">Login</button>
             <button id="signup" onclick="document.getElementById('id02').style.display='block'">Sign up</button>
         </nav>
     </header>
 
 
+    <p><strong>Login to start tracking tools !</strong></p>
+
     <!--  Login Form  -->
     <div id="id01" class="modal">
         <div class="modal-content">
             <span class="close" title="Close Modal"
                 onclick="document.getElementById('id01').style.display='none'">&times;</span>
-            <form id="loginform" class="modal-form" action="login.php" method="post">
+            <form id="loginform" class="modal-form" action="login.php" method="post" autocomplete="off">
                 <h1>Login</h1>
                 <hr>
 
                 <div>
-                <label for="email"><b>Email</b></label>
-                <input id="email" type="text" placeholder="Enter Email" name="email">
-                <div class="error"></div>
+                    <label for="email"><b>Email</b></label>
+                    <input id="email" type="text" placeholder="Enter Email" name="email" autocomplete="off">
+                    <div class="error"></div>
                 </div>
 
                 <div>
-                <label for="password"><b>Password</b></label>
-                <input id="password" type="password" placeholder="Enter Password" name="password">
-                <div class="error"></div>
+                    <label for="password"><b>Password</b></label>
+                    <input id="password" type="password" placeholder="Enter Password" name="password" autocomplete="off">
+                    <div class="error"></div>
                 </div>
 
                 <div class="clearfix">
@@ -56,40 +55,40 @@
         <div class="modal-content">
             <span class="close" title="Close Modal"
                 onclick="document.getElementById('id02').style.display='none'">&times;</span>
-            <form id="signupform" class="modal-form" action="#" method="post"> <!-- Prevent default submission -->
+            <form id="signupform" class="modal-form" action="signup.php" method="post">
                 <h1>Sign Up</h1>
                 <hr>
-                
+
                 <div>
                     <label for="signup-name"><b>Name</b></label>
-                    <input id="signup-name" type="text" placeholder="Enter Name" name="name">
+                    <input id="signup-name" type="text" placeholder="Enter Name" name="name" autocomplete="off">
                     <div class="error"></div>
                 </div>
-    
+
                 <div>
                     <label for="signup-email"><b>Email</b></label>
-                    <input id="signup-email" type="text" placeholder="Enter Email" name="email">
+                    <input id="signup-email" type="text" placeholder="Enter Email" name="email" autocomplete="off">
                     <div class="error"></div>
                 </div>
-    
+
                 <div>
                     <label for="signup-password"><b>Password</b></label>
-                    <input id="signup-password" type="password" placeholder="Enter Password" name="password">
+                    <input id="signup-password" type="password" placeholder="Enter Password" name="password" autocomplete="off">
                     <div class="error"></div>
                 </div>
-    
+
                 <div>
                     <label for="signup-password2"><b>Repeat Password</b></label>
-                    <input id="signup-password2" type="password" placeholder="Repeat Password" name="password2">
+                    <input id="signup-password2" type="password" placeholder="Repeat Password" name="password2" autocomplete="off">
                     <div class="error"></div>
                 </div>
-    
+
                 <div id="tos">
                     <p> By creating an account you agree to our
-                    <a href="#">Terms & Privacy</a>.
+                        <a href="#">Terms & Privacy</a>.
                     </p>
                 </div>
-    
+
                 <div class="clearfix">
                     <button type="submit" class="signupbtn">Sign Up</button>
                 </div>
@@ -97,50 +96,27 @@
         </div>
     </div>
 
-     <!--  Darkmode toggle  -->
-    <button id="buttonDarkMode" onclick="toggleDarkMode()">Light/Dark Mode</button>
-
-    <table>
-        <tr>
-            <th class="id-col">Id</th>
-            <th class="name-col">Name</th>
-            <th class="condition-col">Condition</th>
-            <th class="cost-col">Cost</th>
-        </tr>
-        <tr></tr>
-
-        <?php while($results = mysqli_fetch_assoc($result_set)) { ?>
-        <tr>
-            <td>
-                <?php echo $results['id']; ?>
-            </td>
-            <td>
-                <?php echo $results['name']; ?>
-            </td>
-            <td>
-                <?php echo $results['condition'] ; ?>
-            </td>
-            <td>
-                <?php echo $results['cost']; ?>
-            </td>
-        </tr>
-        <?php } ?>
-    </table>
-
-    
     <script>
-        window.addEventListener('click', function (event) {
+        window.addEventListener('click', function(event) {
             const modal = document.getElementById('id01');
             if (event.target === modal) {
                 modal.style.display = 'none';
             }
         });
-            window.addEventListener('click', function (event) {
+        window.addEventListener('click', function(event) {
             const modal = document.getElementById('id02');
             if (event.target === modal) {
                 modal.style.display = 'none';
             }
         });
+
+        window.addEventListener("DOMContentLoaded", () => {
+            const darkModeSetting = localStorage.getItem("darkMode");
+            if (darkModeSetting === "enabled") {
+                document.body.classList.add("dark-mode");
+            }
+        });
+        
     </script>
 
     <script src="js/script.js"></script>
