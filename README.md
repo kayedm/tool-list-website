@@ -10,14 +10,6 @@ A web-based application for managing and tracking tools with user profiles, them
 - **Light/Dark Theme Toggle**: User preference for interface theme.
 - **Search Functionality**: Quickly search tools by name or description.
 
-
-## Tech Stack
-- **Frontend**: HTML, CSS, JavaScript
-- **Backend**: PHP
-- **Database**: MySQL
-- **Environment**: XAMPP (Apache, PHP, MySQL)
-
-
 ## Installation
 
 1. **Clone the repository**:
