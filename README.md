@@ -38,21 +38,35 @@ A web-based application for managing and tracking tools with user profiles, them
    - Create a new database (e.g., `tool_tracking`).
    - Create the starter tables:
   
-      ```php
-     $host = 'localhost';
-     $db = 'tool_tracking';  // or your chosen DB name
-     $user = 'root';
-     $pass = '';  // default XAMPP MySQL password
-     ```
+   ```sql
+   DROP DATABASE IF EXISTS toollistdb;
+   CREATE DATABASE toollistdb;
+   USE toollistdb;
+
+   CREATE TABLE users (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+       username VARCHAR(50) NOT NULL UNIQUE,
+       email VARCHAR(100) NOT NULL UNIQUE,
+       password VARCHAR(255) NOT NULL
+   );
+
+   CREATE TABLE tools (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+       name VARCHAR(255),
+       ToolCondition VARCHAR(255),
+       cost DECIMAL(10,2),
+       user_id INT NOT NULL,
+       FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+   );
 
 5. **Configure the database connection**:
    - Open `config.php` in the project root.
    - Set your database credentials:
      ```php
      $host = 'localhost';
-     $db = 'tool_tracking';  // or your chosen DB name
+     $db = 'tool_tracking';  // your db name
      $user = 'root';
-     $pass = '';  // default XAMPP MySQL password
+     $pass = ''; // your db password
      ```
 
 6. **Access the website**:
