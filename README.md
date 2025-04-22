@@ -4,8 +4,8 @@ A web-based application for managing and tracking tools with user profiles, them
 
 
 ## Features
-- **Add/Edit/Delete Tools**: Easily manage tool inventory with forms.
-- **User Profiles**: Each user has a profile with stats (e.g., tools added, last login).
+- **Add/Edit/Delete Tools**: Manage tool inventory with forms.
+- **User Profiles**: Each user has a profile with stats (Username, Amount of tools).
 - **Frontend & Backend Validation**: Ensure all input data is valid and secure.
 - **Light/Dark Theme Toggle**: User preference for interface theme.
 - **Search Functionality**: Quickly search tools by name or description.
@@ -31,9 +31,6 @@ A web-based application for managing and tracking tools with user profiles, them
    - Create the starter tables:
   
    ```sql
-   DROP DATABASE IF EXISTS toollistdb;
-   CREATE DATABASE toollistdb;
-   USE toollistdb;
 
    CREATE TABLE users (
        id INT AUTO_INCREMENT PRIMARY KEY,
